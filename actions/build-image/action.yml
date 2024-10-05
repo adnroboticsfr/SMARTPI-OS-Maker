@@ -1,5 +1,5 @@
 name: "Armbian/build"
-author: "ADNroboticsfr"
+author: "Stefan Dej"
 description: "Build armbian images"
 inputs:
   configfile:
