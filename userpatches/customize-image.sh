@@ -110,4 +110,49 @@ installScreensaverSetup() {
     echo "Install rotated touch configuration ... [DONE]"
 }
 
-Main "S{@}"
+#Main "S{@}"
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt update && sudo apt install -y \
+build-essential wget git cmake \
+python3-pip \
+python-rosinstall-generator \
+python3-colcon-common-extensions \
+python3-flake8*
+python3-pytest python3-pytest-cov python3-pytest-repeat python3-pytest-rerunfailures \
+python3-rosdep python3-setuptools python3-vcstool \
+libcunit1-d libcunit1-dev
+
+mkdir -p ~/ros2_humble/src
+cd ~/ros2_humble
+
+rosinstall_generator ros_base --deps --rosdistro humble > ros2.repos
+
+vcs import src < ros2.repos
+
+sudo rosdep init
+rosdep update
+
+rosdep install --from-paths src --ignore-src -y \
+--skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" --rosdistro humble
+
+cd ~/ros2_humble/
+colcon build --symlink-install --cmake-args -DBUILD_TESTING=OFF
+
+source ~/ros2_humble/install/local_setup.bash
+
+mdkir -p ~/ros2_ws/src
+cd ~/ ros2_ws/src
+
+git clone https://github.com/ros2/example_interfaces.git
+git clone https://github.com/ros2/demos
+
+cd ~/ros2_ws
+colcon build --packages-up-to demo_nodes_cpp
+
+source ~/ros2_ws/install/setup.bash
+ros2 run demo_nodes_cpp talker
+
+
