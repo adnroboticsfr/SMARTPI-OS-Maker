@@ -23,22 +23,22 @@ BUILD_DESKTOP=$4
 Main() {
     case "${BOARD}" in
         smartpad)
-            rotateConsole
-            rotateScreen
-            rotateTouch
-            disableDPMS
+            #rotateConsole
+            #rotateScreen
+            #rotateTouch
+            #disableDPMS
             if [[ "${BUILD_DESKTOP}" = "yes" ]]; then
-                patchLightdm
-                copyOnboardConf
-                patchOnboardAutostart
-                installScreensaverSetup
+                #patchLightdm
+                #copyOnboardConf
+                #patchOnboardAutostart
+                #installScreensaverSetup
             fi
             ;;
     esac
 
     # Ajout des commandes apt update et installation des dépendances
-    sudo apt update
-    sudo apt upgrade -y
+    #sudo apt update
+    #sudo apt upgrade -y
     sudo apt install -y \
         build-essential wget git cmake \
         python3-pip \
