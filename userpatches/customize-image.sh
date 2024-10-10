@@ -50,36 +50,36 @@ Main() {
         libcunit1-d libcunit1-dev
 
     # Installation de ROS 2 Humble
-    mkdir -p ~/ros2_humble/src
-    cd ~/ros2_humble
+    #mkdir -p ~/ros2_humble/src
+    #cd ~/ros2_humble
 
-    rosinstall_generator ros_base --deps --rosdistro humble > ros2.repos
+    #rosinstall_generator ros_base --deps --rosdistro humble > ros2.repos
 
-    vcs import src < ros2.repos
+    #vcs import src < ros2.repos
 
-    sudo rosdep init
-    rosdep update
+    #sudo rosdep init
+    #rosdep update
 
-    rosdep install --from-paths src --ignore-src -y \
-        --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" --rosdistro humble
+    #rosdep install --from-paths src --ignore-src -y \
+        --skip-keys "fastcdr #rti-connext-dds-6.0.1 urdfdom_headers" --rosdistro humble
 
-    cd ~/ros2_humble/
-    colcon build --symlink-install --cmake-args -DBUILD_TESTING=OFF
+    #cd ~/ros2_humble/
+    #colcon build --symlink-install --cmake-args -DBUILD_TESTING=OFF
 
-    source ~/ros2_humble/install/local_setup.bash
+    #source ~/ros2_humble/install/local_setup.bash
 
     # Clonage et compilation de ROS 2 demo
-    mkdir -p ~/ros2_ws/src
-    cd ~/ros2_ws/src
+    #mkdir -p ~/ros2_ws/src
+    #cd ~/ros2_ws/src
 
-    git clone https://github.com/ros2/example_interfaces.git
-    git clone https://github.com/ros2/demos
+    #git clone https://github.com/ros2/example_interfaces.git
+    #git clone https://github.com/ros2/demos
 
-    cd ~/ros2_ws
-    colcon build --packages-up-to demo_nodes_cpp
+    #cd ~/ros2_ws
+    #colcon build --packages-up-to demo_nodes_cpp
 
-    source ~/ros2_ws/install/setup.bash
-    ros2 run demo_nodes_cpp talker
+    #source ~/ros2_ws/install/setup.bash
+    #ros2 run demo_nodes_cpp talker
 }
 
 rotateConsole() {
