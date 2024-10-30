@@ -21,20 +21,20 @@ BOARD=$3
 BUILD_DESKTOP=$4
 
 Main() {
-    case "${BOARD}" in
-        smartpad)
+    #case "${BOARD}" in
+        #smartpad)
             #rotateConsole
             #rotateScreen
             #rotateTouch
             #disableDPMS
-            if [[ "${BUILD_DESKTOP}" = "yes" ]]; then
+            #if [[ "${BUILD_DESKTOP}" = "yes" ]]; then
                 #patchLightdm
                 #copyOnboardConf
                 #patchOnboardAutostart
                 #installScreensaverSetup
-            fi
-            ;;
-    esac
+            #fi
+            #;;
+    #esac
 
     # Ajout des commandes apt update et installation des dépendances
     sudo apt update
