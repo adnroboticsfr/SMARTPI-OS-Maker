@@ -37,10 +37,10 @@ Main() {
     esac
 
     # Ajout des commandes apt update et installation des dépendances
-    #sudo apt update
-    #sudo apt upgrade -y
-    sudo apt install -y \
-        ros-desktop-full-python-dev
+    sudo apt update
+    sudo apt upgrade -y
+    #sudo apt install -y \
+        #ros-desktop-full-python-dev
 }
 
 rotateConsole() {
