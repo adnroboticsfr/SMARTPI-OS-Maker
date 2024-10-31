@@ -21,20 +21,26 @@ BOARD=$3
 BUILD_DESKTOP=$4
 
 Main() {
-    case "${BOARD}" in
-        smartpad)
-            rotateConsole
-            rotateScreen
-            rotateTouch
-            disableDPMS
-            if [[ "${BUILD_DESKTOP}" = "yes" ]]; then
-                patchLightdm
-                copyOnboardConf
-                patchOnboardAutostart
-                installScreensaverSetup
-            fi
-            ;;
-    esac
+    #case "${BOARD}" in
+        #smartpad)
+            #rotateConsole
+            #rotateScreen
+            #rotateTouch
+            #disableDPMS
+            #if [[ "${BUILD_DESKTOP}" = "yes" ]]; then
+                #patchLightdm
+                #copyOnboardConf
+                #patchOnboardAutostart
+                #installScreensaverSetup
+            #fi
+            #;;
+    #esac
+
+    # Ajout des commandes apt update et installation des dépendances
+    sudo apt update
+    sudo apt upgrade -y
+    #sudo apt install -y \
+        #ros-desktop-full-python-dev
 }
 
 rotateConsole() {
@@ -110,4 +116,4 @@ installScreensaverSetup() {
     echo "Install rotated touch configuration ... [DONE]"
 }
 
-Main "S{@}"
+Main "$@"
